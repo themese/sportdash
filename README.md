@@ -40,9 +40,15 @@ Contains a simple implementation of the backend. In reality, this could have bee
 The backend will read the db.ts as if it were the original DB and create a cached version of this db. It will then be passed to the FrontEnd and it will be updated using CRUD operations whenever its needed.
 
 ### frontend
-The front end is a simple react dashboard using Material UI. It has a side menu to demonstrate use of Material UI. Visually, what will happen is that the matches will simulate time and goals overtime time, so if you leave the site running, you will see some matches getting updated.
-Also, you will see Live matches on top of ended matches. This could be further improved adding dates for example, as currently I only track whether the match is live or not, but assumes that a match that is not live means that has already ended, but it could be that it hasn't started yet.
-The front end will call the backend to simulate API calls
+What I wanted to do is to follow the guidelines and demonstrate a bit of expertise, while at the same time, try to accomplish this ASAP. I know I can build a whole project and infraestrcture in a week, but I think that it would be very interesting to build something simple as you require in the guidelines, but fast enough.
+
+The UI displays 2 tables using MaterialUI, representing live and ended matches. There will be some already ended and some already started. In order to demo the project, you will be able to add goals and start games.
+
+Visually, what will happen is that the matches will simulate time and goals overtime time, so if you leave the site running, you will see some matches getting updated.
+
+This could be further improved adding dates for example, as currently I only track whether the match is live or not, but assumes that a match that is not live means that has already ended, but it could be that it hasn't started yet.
+The front end will call the backend to simulate API calls.
+
 
 ### interfaces
 As I'm doing somewhat of a monolith, I will create a interfaces folder to store shared interfaces between the backend and front end.
