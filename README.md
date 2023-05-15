@@ -46,3 +46,8 @@ The front end will call the backend to simulate API calls
 
 ### interfaces
 As I'm doing somewhat of a monolith, I will create a interfaces folder to store shared interfaces between the backend and front end.
+
+
+## Things to Improve
+1. Add independency injection using classes and interfaces
+2. Add fake db to tests

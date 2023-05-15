@@ -21,3 +21,11 @@ function getMatchesFromDb(): Match[] {
 export function getMatches() {
   return matches;
 }
+
+export function addGoal(id: number, addToHomeTeam: boolean) {
+  if (addToHomeTeam) {
+    matches[id].homeScore++;
+  } else {
+    matches[id].visitorScore++;
+  }
+}

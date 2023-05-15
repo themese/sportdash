@@ -1,4 +1,4 @@
-import { getMatches } from "../match.service"
+import { addGoal, getMatches } from "../match.service"
 
 test('transforms original db to db using interfaces', () => {
   const data = getMatches();
@@ -14,4 +14,27 @@ test('transforms original db to db using interfaces', () => {
   expect(uruguayItalyMatch.visitorTeam).toBe('Italy');
   expect(uruguayItalyMatch.homeScore).toBe(6);
   expect(uruguayItalyMatch.visitorScore).toBe(6);
-})
+});
+
+test('adds scores to spain-brazil', () => {
+  const data = getMatches();
+  const matchIndex = 1;
+  const match = data[matchIndex];
+  addGoal(matchIndex, false);
+
+  expect(match.homeScore).toBe(10);
+  expect(match.visitorScore).toBe(3);
+
+  addGoal(matchIndex, false);
+
+  expect(match.homeScore).toBe(10);
+  expect(match.visitorScore).toBe(4);
+
+  addGoal(matchIndex, true);
+  addGoal(matchIndex, true);
+  addGoal(matchIndex, false);
+  addGoal(matchIndex, true);
+
+  expect(match.homeScore).toBe(13);
+  expect(match.visitorScore).toBe(5);
+});
