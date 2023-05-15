@@ -29,18 +29,20 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Project Structure
+I created 3 different folders to simulate 3 different environments, like a simple and redundant monolith. Each folder could be on its own repo, in a well formed mono repo or in a properly configured monolith.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### db
+Contains a simple string array with the DB simulation. This is to simulate what was provided in the coding exercise
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### backend
+Contains a simple implementation of the backend. In reality, this could have been a separate API or lambdas in cloud. It will read the `db.ts` and return it as a String with the whole information to be returned. The idea is that we use a `Match` interface that will include different data such as the name of the teams, their score and the current live status of the game.
+The backend will read the db.ts as if it were the original DB and create a cached version of this db. It will then be passed to the FrontEnd and it will be updated using CRUD operations whenever its needed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### frontend
+The front end is a simple react dashboard using Material UI. It has a side menu to demonstrate use of Material UI. Visually, what will happen is that the matches will simulate time and goals overtime time, so if you leave the site running, you will see some matches getting updated.
+Also, you will see Live matches on top of ended matches. This could be further improved adding dates for example, as currently I only track whether the match is live or not, but assumes that a match that is not live means that has already ended, but it could be that it hasn't started yet.
+The front end will call the backend to simulate API calls
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### interfaces
+As I'm doing somewhat of a monolith, I will create a interfaces folder to store shared interfaces between the backend and front end.
