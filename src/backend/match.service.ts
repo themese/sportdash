@@ -39,3 +39,19 @@ export function removeGoal(id: number, removeFromHomeTeam: boolean) {
     matches[id].visitorScore !== 0 ? matches[id].visitorScore-- : matches[id].visitorScore = 0;
   }
 }
+
+export function startMatch(id: number) {
+  const match = matches[id];
+  if (match) {
+    match.isLive = true;
+    match.hasBeenPlayed = false;
+  }
+}
+
+export function endMatch(id: number) {
+  const match = matches[id];
+  if (match) {
+    match.isLive = false;
+    match.hasBeenPlayed = true;
+  }
+}

@@ -1,4 +1,4 @@
-import { addGoal, getMatches, removeGoal } from "../match.service"
+import { addGoal, endMatch, getMatches, removeGoal, startMatch } from "../match.service"
 
 test('transforms original db to db using interfaces', () => {
   const data = getMatches();
@@ -158,4 +158,39 @@ test('adds goals and removes goals from multiple matches', async () => {
   expect(swedenMatch.homeScore).toBe(40);
   expect(swedenMatch.visitorScore).toBe(0);
   // #endregion
+});
+
+test('starts a match', () => {
+  const data = getMatches();
+  const argentinaIndex = 4;
+  const portugalIndex = 5;
+  expect(data[argentinaIndex].isLive).toBe(true);
+  expect(data[argentinaIndex].hasBeenPlayed).toBe(false);
+  expect(data[portugalIndex].isLive).toBe(false);
+  expect(data[portugalIndex].hasBeenPlayed).toBe(false);
+  startMatch(argentinaIndex);
+  startMatch(portugalIndex);
+  startMatch(-1);
+  expect(data[argentinaIndex].isLive).toBe(true);
+  expect(data[argentinaIndex].hasBeenPlayed).toBe(false);
+  expect(data[portugalIndex].isLive).toBe(true);
+  expect(data[portugalIndex].hasBeenPlayed).toBe(false);
+});
+
+
+test('ends a match', () => {
+  const data = getMatches();
+  const mexicoIndex = 0;
+  const usaIndex = 7;
+  expect(data[mexicoIndex].isLive).toBe(true);
+  expect(data[mexicoIndex].hasBeenPlayed).toBe(false);
+  expect(data[usaIndex].isLive).toBe(false);
+  expect(data[usaIndex].hasBeenPlayed).toBe(false);
+  endMatch(mexicoIndex);
+  endMatch(usaIndex);
+  endMatch(-1);
+  expect(data[mexicoIndex].isLive).toBe(false);
+  expect(data[mexicoIndex].hasBeenPlayed).toBe(true);
+  expect(data[usaIndex].isLive).toBe(false);
+  expect(data[usaIndex].hasBeenPlayed).toBe(true);
 });
