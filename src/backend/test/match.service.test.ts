@@ -4,16 +4,28 @@ test('transforms original db to db using interfaces', () => {
   const data = getMatches();
   const mexicoCanadaMatch = data[0];
   const uruguayItalyMatch = data[3];
+  const usaChinaMatch = data[7];
   expect(data.length).toBe(9); // not the best test, but I wanted to make sure we are reading correctly the ts file
   expect(mexicoCanadaMatch.homeTeam).toBe('Mexico');
   expect(mexicoCanadaMatch.visitorTeam).toBe('Canada');
   expect(mexicoCanadaMatch.homeScore).toBe(0);
   expect(mexicoCanadaMatch.visitorScore).toBe(5);
+  expect(mexicoCanadaMatch.isLive).toBe(true);
+  expect(mexicoCanadaMatch.hasBeenPlayed).toBe(false);
 
   expect(uruguayItalyMatch.homeTeam).toBe('Uruguay');
   expect(uruguayItalyMatch.visitorTeam).toBe('Italy');
   expect(uruguayItalyMatch.homeScore).toBe(6);
   expect(uruguayItalyMatch.visitorScore).toBe(6);
+  expect(uruguayItalyMatch.isLive).toBe(true);
+  expect(uruguayItalyMatch.hasBeenPlayed).toBe(false);
+
+  expect(usaChinaMatch.homeTeam).toBe('USA');
+  expect(usaChinaMatch.visitorTeam).toBe('China');
+  expect(usaChinaMatch.homeScore).toBe(0);
+  expect(usaChinaMatch.visitorScore).toBe(0);
+  expect(usaChinaMatch.isLive).toBe(false);
+  expect(usaChinaMatch.hasBeenPlayed).toBe(false);
 });
 
 test('adds goals to spain-brazil', () => {

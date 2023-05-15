@@ -4,7 +4,7 @@ import Match from "../interfaces/match";
 const matches: Match[] = getMatchesFromDb();
 
 function getMatchesFromDb(): Match[] {
-  return db.map(str => {
+  return db.map((str, index) => {
     const teams = str.split(':')[0];
     const scores = str.split(':')[1];
     const match: Match = {
@@ -12,7 +12,8 @@ function getMatchesFromDb(): Match[] {
       homeScore: parseInt(scores.split('-')[0]),
       visitorTeam: teams.split('-')[1].trim(),
       visitorScore: parseInt(scores.split('-')[1]),
-      isLive: false
+      hasBeenPlayed: index === 8 ? true : false, // set one match as if it was already completed
+      isLive: index <= 4 ? true : false, // from Mexico match to Argentina match, set them as live for demo purposes
     };
     return match;
   });

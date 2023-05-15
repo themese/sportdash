@@ -4,4 +4,5 @@ export default interface Match {
   visitorTeam: string;
   visitorScore: number;
   isLive: boolean;
+  hasBeenPlayed: boolean;
 }
