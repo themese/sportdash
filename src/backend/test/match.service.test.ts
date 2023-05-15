@@ -1,4 +1,4 @@
-import { addGoal, getMatches } from "../match.service"
+import { addGoal, getMatches, removeGoal } from "../match.service"
 
 test('transforms original db to db using interfaces', () => {
   const data = getMatches();
@@ -16,7 +16,7 @@ test('transforms original db to db using interfaces', () => {
   expect(uruguayItalyMatch.visitorScore).toBe(6);
 });
 
-test('adds scores to spain-brazil', () => {
+test('adds goals to spain-brazil', () => {
   const data = getMatches();
   const matchIndex = 1;
   const match = data[matchIndex];
@@ -39,3 +39,29 @@ test('adds scores to spain-brazil', () => {
   expect(match.visitorScore).toBe(5);
 });
 
+test('removes goals to Argentina - Australia', () => {
+  const data = getMatches();
+  const matchIndex = 4;
+  const match = data[matchIndex];
+  removeGoal(matchIndex, false);
+
+  expect(match.homeScore).toBe(3);
+  expect(match.visitorScore).toBe(0);
+
+  // testing no negative goals
+  removeGoal(matchIndex, false);
+  expect(match.homeScore).toBe(3);
+  expect(match.visitorScore).toBe(0);
+
+  removeGoal(matchIndex, true);
+  expect(match.homeScore).toBe(2);
+  expect(match.visitorScore).toBe(0);
+
+  removeGoal(matchIndex, true);
+  removeGoal(matchIndex, false);
+  removeGoal(matchIndex, true);
+  removeGoal(matchIndex, true);
+  removeGoal(matchIndex, true);
+  expect(match.homeScore).toBe(0);
+  expect(match.visitorScore).toBe(0);
+});

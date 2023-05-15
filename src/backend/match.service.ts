@@ -29,3 +29,12 @@ export function addGoal(id: number, addToHomeTeam: boolean) {
     matches[id].visitorScore++;
   }
 }
+
+// I don't like VAR but it exists so we should consider it
+export function removeGoal(id: number, removeFromHomeTeam: boolean) {
+  if (removeFromHomeTeam) {
+    matches[id].homeScore !== 0 ? matches[id].homeScore-- : matches[id].homeScore = 0;
+  } else {
+    matches[id].visitorScore !== 0 ? matches[id].visitorScore-- : matches[id].visitorScore = 0;
+  }
+}
