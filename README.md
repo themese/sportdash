@@ -33,7 +33,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 I created 3 different folders to simulate 3 different environments, like a simple and redundant monolith. Each folder could be on its own repo, in a well formed mono repo or in a properly configured monolith.
 
 ### db
-Contains a simple string array with the DB simulation. This is to simulate what was provided in the coding exercise
+Contains a simple string array with the DB simulation. This is to simulate what was provided in the coding exercise.
+I didn't add any indexes to the DB as the example didn't have any. It was easy to work without ids as I consume an array and explicitly use position based indexes, but in a real world DB we should consume the DB IDs.
 
 ### backend
 Contains a simple implementation of the backend. In reality, this could have been a separate API or lambdas in cloud. It will read the `db.ts` and return it as a String with the whole information to be returned. The idea is that we use a `Match` interface that will include different data such as the name of the teams, their score and the current live status of the game.
@@ -57,3 +58,5 @@ As I'm doing somewhat of a monolith, I will create a interfaces folder to store 
 ## Things to Improve
 1. Add independency injection using classes and interfaces
 2. Add fake db to tests
+3. Add datetime to matches
+4. Error handling - there's none as it's not an API but a quick implementation as per excersise requirement.

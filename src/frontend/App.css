@@ -32,7 +32,16 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.headerColor {
+  background-color: #00003C !important;
+}
+
+.redirect-logo:hover {
+  cursor: pointer;
 }
