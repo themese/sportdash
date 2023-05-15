@@ -4,7 +4,7 @@ test('transforms original db to db using interfaces', () => {
   const data = getMatches();
   const mexicoCanadaMatch = data[0];
   const uruguayItalyMatch = data[3];
-  expect(data.length).toBe(5);
+  expect(data.length).toBe(9); // not the best test, but I wanted to make sure we are reading correctly the ts file
   expect(mexicoCanadaMatch.homeTeam).toBe('Mexico');
   expect(mexicoCanadaMatch.visitorTeam).toBe('Canada');
   expect(mexicoCanadaMatch.homeScore).toBe(0);
@@ -38,3 +38,4 @@ test('adds scores to spain-brazil', () => {
   expect(match.homeScore).toBe(13);
   expect(match.visitorScore).toBe(5);
 });
+
