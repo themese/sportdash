@@ -1,11 +1,11 @@
 
+import { getMatches } from '../backend/match.service';
 import './App.css';
-import MatchService from '../backend/match.service';
 
 function App() {
   return (
     <div className="App">
-      {MatchService()}
+      {getMatches().length}
     </div>
   );
 }
