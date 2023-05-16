@@ -4,7 +4,7 @@ import { addGoal, endMatch, getMatches, startMatch } from '../backend/match.serv
 import './App.css';
 import MatchTable from './components/MatchTable';
 import TopMenu from './components/TopMenu';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -38,21 +38,21 @@ function App() {
       width: 500,
       renderCell: (params: GridRenderCellParams) => {
         const buttons = [
-        <Button onClick={() => addGoalHome(params.row.id)}>
-         Add Home Goal
+        <Button onClick={() => addGoalHome(params.row.id)} className='button'>
+         Home Goal
         </Button>,
-        <Button onClick={() => addGoalVisitor(params.row.id)}>
-         Add Visitor Goal
+        <Button onClick={() => addGoalVisitor(params.row.id)} className='button'>
+         Visitor Goal
         </Button>
         ];
         if(!params.row.isLive && !params.row.hasBeenPlayed){
           buttons.push(
-            <Button onClick={() => start(params.row.id)}>
+            <Button onClick={() => start(params.row.id)} className='button'>
               Start Match
             </Button>,)
         } else {
           buttons.push(
-            <Button onClick={() => end(params.row.id)}>
+            <Button onClick={() => end(params.row.id)} className='button'>
               End Match
             </Button>,)
         }
@@ -102,12 +102,22 @@ function App() {
   return (
     <div className="App">
       <TopMenu/>
-      <div className='table-container'>
-        <div className='table'>
-         <MatchTable columns={liveMatchesColumns} rows={liveMatches.map((el, id) => ({id, ...el}))}/>
+      <div className='tables-container'>
+        <div className="table-container">
+          <Typography className='title' variant="h5" gutterBottom>
+            Live matches
+          </Typography>
+          <div className='table'>
+          <MatchTable columns={liveMatchesColumns} rows={liveMatches.map((el, id) => ({id, ...el}))}/>
+          </div>
         </div>
-        <div className='table'>
-          <MatchTable columns={finishedMatchesColumns} rows={finishedMatches.map((el, id) => ({id, ...el}))}/>
+        <div className="table-container">
+          <Typography className='title' variant="h4" gutterBottom>
+              Completed matches
+            </Typography>
+          <div className='table'>
+            <MatchTable columns={finishedMatchesColumns} rows={finishedMatches.map((el, id) => ({id, ...el}))}/>
+          </div>
         </div>
       </div>
      

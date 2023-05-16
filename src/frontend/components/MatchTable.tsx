@@ -16,6 +16,7 @@ const MatchTable = ({columns, rows}: Props) => {
       rows={rows}
       columns={columns}
       hideFooter
+      sx={{color: 'white'}}
     />
   );
 };

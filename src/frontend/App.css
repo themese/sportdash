@@ -1,17 +1,37 @@
+body {
+  background-color: white;
+}
+
 .App {
   text-align: center;
 }
 
-.table-container {
+.tables-container {
   display: flex;
   justify-content: space-evenly;
 }
 
-.table {
+.table-container {
+  display: flex;
+  flex-direction: column;
   margin-top: 50px;
   margin-right: 10px;
   margin-left: 10px;
-  width: 55%;
+}
+
+.title {
+  font-weight: 900 !important;
+  align-self: flex-start;
+}
+
+.table {
+  margin-top: 10px;
+  background-color: #212167 !important;
+
+}
+
+.white-font {
+  color: white !important;
 }
 
 .headerColor {
@@ -20,4 +40,11 @@
 
 .redirect-logo:hover {
   cursor: pointer;
+}
+
+.button {
+  background-color: #FF0000 !important;
+  color: white !important;
+  margin-left: 5px !important;
+  text-transform: capitalize !important;
 }
