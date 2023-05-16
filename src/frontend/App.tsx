@@ -102,13 +102,15 @@ function App() {
   return (
     <div className="App">
       <TopMenu/>
-      <div style={{marginTop: '50px'}}>
-        
-        <MatchTable columns={liveMatchesColumns} rows={liveMatches.map((el, id) => ({id, ...el}))}/>
+      <div className='table-container'>
+        <div className='table'>
+         <MatchTable columns={liveMatchesColumns} rows={liveMatches.map((el, id) => ({id, ...el}))}/>
+        </div>
+        <div className='table'>
+          <MatchTable columns={finishedMatchesColumns} rows={finishedMatches.map((el, id) => ({id, ...el}))}/>
+        </div>
       </div>
-      <div style={{marginTop: '20px'}}>
-        <MatchTable columns={finishedMatchesColumns} rows={finishedMatches.map((el, id) => ({id, ...el}))}/>
-      </div>
+     
     </div>
   );
 }
